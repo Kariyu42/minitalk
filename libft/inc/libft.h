@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:14:51 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/04/07 16:50:05 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/04/14 09:16:39 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-# include "get_next_line.h"
 
 typedef struct s_list
 {

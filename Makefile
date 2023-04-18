@@ -6,12 +6,11 @@
 #    By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 13:42:41 by kquetat-          #+#    #+#              #
-#    Updated: 2023/04/12 14:13:17 by kquetat-         ###   ########.fr        #
+#    Updated: 2023/04/18 12:07:44 by kquetat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### Colors ###
-VIOLET		=\033[0;35m
 GRAY		=\033[0;37m
 OGREEN		=\033[0;32m
 SKYBLUE		=\033[0;36m
@@ -21,9 +20,12 @@ RESET		=\033[0m
 ITALIC		=\033[3m
 
 ### Client & Server ###
-NAME	=	client
-SERV	=	server
-PATH_S	=	srcs/
+NAME		=	server
+CLIENT		=	client
+PATH_SERV	=	srcs/server/
+PATH_CLIENT	=	srcs/client/
+LIBFT		=	libft/libft/
+PRINT_PATH	=	libft/ft_printf/
 
 ### Compiler ###
 CC		=	gcc
@@ -31,15 +33,58 @@ CFLAGS	=	-Wall -Wextra -Werror
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(SKYBLUE)$(BOLD)$(ITALIC)-> Compiling $(OGREEN)$(BOLD)[CLIENT] => $(RESET)""$(OGREEN) <$<> \033[K\r$(RESET)"
+	@printf "$(SKYBLUE)$(BOLD)$(ITALIC)-> Compiling $(OGREEN)$(BOLD)[MINITALK] => $(RESET)""$(OGREEN) <$<> \033[K\r$(RESET)"
 
 RM		=	rm -f
 
 ### Source files ###
-SRCS_SERV	=	${addprefix ${}}
-OBJ_SERV	=	$(SRCS_SERV:.c=.o)
+
+SERVER_SRCS	=	${addprefix ${PATH_SERV}, server.c}
+
+CLIENT_SRCS	=	${addprefix ${PATH_CLIENT}, client.c}
+
+PRINT_SRCS	=	${addprefix ${PRINT_PATH}, ft_printf.c} \
+				${addprefix ${PRINT_PATH}srcs/, add_numflags.c ft_get_precision.c \
+				ft_get_width.c hexa_padd.c int_precision.c print_addr.c print_char.c \
+				print_hexa.c print_int.c print_str.c print_unsigned.c}
+
+OBJS_SERV	=	$(SERVER_SRCS:.c=.o) $(PRINT_SRCS:.c=.o)
+OBJS_CLIENT	=	$(CLIENT_SRCS:.c=.o) $(PRINT_SRCS:.c=.o)
 
 ### Rules ###
-all:	$(SERV) $(NAME)
+all:	$(NAME)	$(CLIENT)
 
-$(SERV):	$(OBJ_SERV)
+$(NAME):	$(OBJS_SERV)
+	@echo "\n"
+	@printf "\t$(BEIGE)$(BOLD)$(ITALIC)SERVER files compiled$(RESET) ✨\n\n"
+	@printf "$(SKYBLUE)$(BOLD)$(ITALIC)-> Compiling $(RESET)$(OGREEN)$(BOLD)[LIBFT]$(RESET)\n"
+	@make -C $(LIBFT)
+	@printf "\n\n\t$(BEIGE)$(BOLD)$(ITALIC)LIBFT files compiled$(RESET) ✨\n\n"
+	@$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)libft.a
+	@printf "$(BOLD)$(ITALIC)$(LGREEN)SERVER COMPILED$(RESET) ✅\n"
+
+$(CLIENT):	$(OBJS_CLIENT)
+	@echo "\n"
+	@printf "\t$(BEIGE)$(BOLD)$(ITALIC)CLIENT files compiled$(RESET) ✨\n\n"
+	@printf "$(SKYBLUE)$(BOLD)$(ITALIC)-> Compiling $(RESET)$(OGREEN)$(BOLD)[LIBFT]$(RESET)\n"
+	@make -C $(LIBFT)
+	@printf "\n\n\t$(BEIGE)$(BOLD)$(ITALIC)LIBFT files compiled$(RESET) ✨\n\n"
+	@$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)libft.a
+	@printf "$(BOLD)$(ITALIC)$(LGREEN)SERVER COMPILED$(RESET) ✅\n"
+
+clean:
+	@$(RM) $(OBJS_SERV)
+	@$(RM) $(OBJS_CLIENT)
+	@printf "\n\t$(BEIGE)$(BOLD)$(ITALIC)Server files removed$(RESET) 🗂  ❌\n\n"
+	@make clean -C $(LIBFT)
+	@printf "\n\t$(BEIGE)$(BOLD)$(ITALIC)LIBFT files removed$(RESET) 📚 ❌\n\n"
+
+fclean:	clean
+	@$(RM) $(NAME)
+	@$(RM) $(CLIENT)
+	@$(RM) $(LIBFT)libft.a
+	@printf "\n\t$(BEIGE)$(BOLD)$(ITALIC)SERVER binary removed$(RESET) 💽 ❌\n\n"
+
+re:		fclean all
+
+.PHONY:	all debug clean fclean bonus re
