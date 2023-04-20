@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 11:06:10 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/04/18 10:58:50 by kquetat-         ###   ########.fr       */
+/*   Created: 2023/04/12 13:51:23 by kquetat-          #+#    #+#             */
+/*   Updated: 2023/04/20 12:01:00 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#ifndef MINITALK_H
+# define MINITALK_H
 
 /* libraries */
 #include "../libft/inc/libft.h"
 #include <signal.h>
 
 /* sources */
+void	handle_signals(int signal);
 
 #endif
