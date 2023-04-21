@@ -6,7 +6,7 @@
 #    By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 13:42:41 by kquetat-          #+#    #+#              #
-#    Updated: 2023/04/20 13:19:44 by kquetat-         ###   ########.fr        #
+#    Updated: 2023/04/21 12:40:53 by kquetat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ RM		=	rm -f
 
 ### Source files ###
 
-UTILS_SRCS	=	${addprefix ${PATH_UTILS}, utils.c}
+# UTILS_SRCS	=	${addprefix ${PATH_UTILS}, utils.c}
 
 SERVER_SRCS	=	${addprefix ${PATH_SERV}, server.c}
 
@@ -51,8 +51,8 @@ PRINT_SRCS	=	${addprefix ${PRINT_PATH}, ft_printf.c} \
 				ft_get_width.c hexa_padd.c int_precision.c print_addr.c print_char.c \
 				print_hexa.c print_int.c print_str.c print_unsigned.c}
 
-OBJS_SERV	=	$(SERVER_SRCS:.c=.o) $(UTILS_SRCS:.c=.o) $(PRINT_SRCS:.c=.o)
-OBJS_CLIENT	=	$(CLIENT_SRCS:.c=.o) $(UTILS_SRCS:.c=.o) $(PRINT_SRCS:.c=.o)
+OBJS_SERV	=	$(SERVER_SRCS:.c=.o) $(PRINT_SRCS:.c=.o)
+OBJS_CLIENT	=	$(CLIENT_SRCS:.c=.o) $(PRINT_SRCS:.c=.o)
 
 ### Rules ###
 all:	$(NAME)	$(CLIENT)

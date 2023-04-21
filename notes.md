@@ -141,4 +141,6 @@ Le résultat est pour le peu étrange :
 
 __Un processus zombie__: c’est un processus qui a terminé sa tâche mais qui reste présent en attendant que son père le prenne en compte.
 
+# Convertir un char en Binaire
+
 
