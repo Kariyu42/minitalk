@@ -6,7 +6,7 @@
 #    By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 13:42:41 by kquetat-          #+#    #+#              #
-#    Updated: 2023/04/21 12:40:53 by kquetat-         ###   ########.fr        #
+#    Updated: 2023/04/22 19:48:44 by kquetat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,7 @@ ITALIC		=\033[3m
 ### Client & Server ###
 NAME		=	server
 CLIENT		=	client
-PATH_SERV	=	srcs/server/
-PATH_CLIENT	=	srcs/client/
-PATH_UTILS	=	srcs/utils/
+PATH_SRCS	=	srcs/main/
 LIBFT		=	libft/libft/
 PRINT_PATH	=	libft/ft_printf/
 
@@ -40,11 +38,9 @@ RM		=	rm -f
 
 ### Source files ###
 
-# UTILS_SRCS	=	${addprefix ${PATH_UTILS}, utils.c}
+SERVER_SRCS	=	${addprefix ${PATH_SRCS}, server.c}
 
-SERVER_SRCS	=	${addprefix ${PATH_SERV}, server.c}
-
-CLIENT_SRCS	=	${addprefix ${PATH_CLIENT}, client.c}
+CLIENT_SRCS	=	${addprefix ${PATH_SRCS}, client.c}
 
 PRINT_SRCS	=	${addprefix ${PRINT_PATH}, ft_printf.c} \
 				${addprefix ${PRINT_PATH}srcs/, add_numflags.c ft_get_precision.c \

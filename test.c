@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 13:51:23 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/04/23 19:26:51 by kquetat-         ###   ########.fr       */
+/*   Created: 2023/04/23 21:54:15 by kquetat-          #+#    #+#             */
+/*   Updated: 2023/04/24 09:10:06 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include <stdio.h>
 
-# define BUFFER_SIZE 8
+int	main(void)
+{
+	int i = 0;
+	char buffer[8] = "01101000";
+	char c = 0;
 
-/* libraries */
-#include "../libft/inc/libft.h"
-#include <signal.h>
-
-#endif
+	while (i < 8)
+	{
+		c |= (buffer[i] - '0') << (7 - i);
+		printf("char = %c\n", c);
+		i++;
+	}
+	return (0);
+}
