@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:40:38 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/04/23 19:34:19 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:01:17 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,13 @@ void	convert_binary(pid_t pid, char c)
 
 	i = 7;
 	bit = 0;
-	ft_printf("\nClient: ");
 	while (i >= 0)
 	{
 		bit = (c >> i) & 1;
 		if (bit == 0)
-		{
-			ft_printf("0");
 			kill(pid, SIGUSR1);
-		}
 		else
-		{
-			ft_printf("1");
 			kill(pid, SIGUSR2);
-		}
 		while (!g_wait)
 			usleep(10);
 		g_wait = 0;
