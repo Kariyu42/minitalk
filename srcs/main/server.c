@@ -6,17 +6,16 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:58:02 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/04/24 14:15:00 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:40:21 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minitalk.h"
 #include "../../libft/inc/ft_printf.h"
-#include <stdio.h>
 
 int	g_bit;
 
-static char *final_print(char *str)
+static char	*final_print(char *str)
 {
 	ft_putstr_fd(str, 1);
 	free(str);
@@ -24,7 +23,7 @@ static char *final_print(char *str)
 	return (str);
 }
 
-static char *concatenate_char(char *str, char c)
+static char	*concatenate_char(char *str, char c)
 {
 	int		i;
 	int		len;
@@ -65,10 +64,10 @@ static void	print_string(pid_t pid)
 			c |= buffer[i] << (BUFFER_SIZE - i - 1);
 		str = concatenate_char(str, c);
 		i = 0;
+		if (c == '\0')
+			str = final_print(str);
 	}
 	kill(pid, SIGUSR1);
-	if (c == '\0')
-		str = final_print(str);
 }
 
 static void	signal_handler(int signal, siginfo_t *sa, void *ignore)

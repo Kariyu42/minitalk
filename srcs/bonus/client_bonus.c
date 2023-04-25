@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:00:52 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/04/24 18:13:18 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:39:25 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	send_message(pid_t pid, char *message)
 	convert_binary(pid, '\0');
 }
 
-static void handle_sig(int signal)
+static void	handle_sig(int signal)
 {
 	if (signal == SIGUSR1)
 		g_wait = 1;
@@ -80,4 +80,3 @@ int	main(int argc, char **argv)
 		pause();
 	return (0);
 }
-

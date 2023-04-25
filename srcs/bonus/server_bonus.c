@@ -6,17 +6,16 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:01:02 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/04/24 18:17:00 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:39:54 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minitalk_bonus.h"
 #include "../../libft/inc/ft_printf.h"
-#include <stdio.h>
 
 int	g_bit;
 
-static char *final_print(char *str)
+static char	*final_print(char *str)
 {
 	ft_putstr_fd(str, 1);
 	free(str);
@@ -24,7 +23,7 @@ static char *final_print(char *str)
 	return (str);
 }
 
-static char *concatenate_char(char *str, char c)
+static char	*concatenate_char(char *str, char c)
 {
 	int		i;
 	int		len;
@@ -100,4 +99,3 @@ int	main(void)
 		pause();
 	return (0);
 }
-
