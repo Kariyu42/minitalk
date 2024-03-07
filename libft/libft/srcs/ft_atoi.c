@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 	else if (str[i] == '+')
 		i++;
 	while (str[i] && ft_isdigit(str[i]))
-	{	
+	{
 		nbr = (nbr * 10) + (str[i] - '0');
 		i++;
 	}
